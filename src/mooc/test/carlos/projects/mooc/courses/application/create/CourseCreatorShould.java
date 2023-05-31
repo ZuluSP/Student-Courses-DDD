@@ -12,8 +12,8 @@ final class CourseCreatorShould {
         CourseRepository repository = mock(CourseRepository.class);
         CourseCreator creator = new CourseCreator(repository);
 
-        CreateCourseRequestDTO requestedCourse = new CreateCourseRequestDTO("some-id", "some-name", "some-duration");
-        Course course = new Course(new CourseId(requestedCourse.id()), new CourseName(requestedCourse.name()), new CourseDuration(requestedCourse.duration()));
+        CreateCourseRequestDTO requestedCourse = CreateCourseRequestDTOMother.random();
+        Course course = CourseMother.fromRequest(requestedCourse);
 
         creator.create(requestedCourse);
 
