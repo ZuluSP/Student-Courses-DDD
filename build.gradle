@@ -90,8 +90,16 @@ subprojects {
     dependencies {
         implementation 'org.springframework.boot:spring-boot-starter-web:2.1.8.RELEASE'
 
-        testImplementation 'org.springframework.boot:spring-boot-starter-test:2.1.8.RELEASE'
 
+        // All our subprojects are gonna deppend on the rootProject.
+        testImplementation rootProject.sourceSets.main.output
+        testImplementation 'org.springframework.boot:spring-boot-starter-test:2.1.8.RELEASE'
+        testImplementation 'net.datafaker:datafaker:1.9.0'
+
+        if (project.name != "shared") {
+            implementation project(":shared")
+            testImplementation project(":shared").sourceSets.test.output
+        }
     }
 
     bootJar {
