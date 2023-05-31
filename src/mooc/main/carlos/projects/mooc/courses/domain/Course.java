@@ -14,10 +14,22 @@ public final class Course {
         this.duration = duration;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return Objects.equals(id, course.id) && Objects.equals(name, course.name) && Objects.equals(duration, course.duration);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, duration);
+    }
+
     public CourseId id() {
         return id;
     }
-
     public CourseName name() {
         return name;
     }
