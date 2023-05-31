@@ -1,7 +1,6 @@
 package carlos.projects.mooc.courses.application.create;
 
-import carlos.projects.mooc.courses.domain.Course;
-import carlos.projects.mooc.courses.domain.CourseRepository;
+import carlos.projects.mooc.courses.domain.*;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.atLeastOnce;
@@ -9,13 +8,14 @@ import static org.mockito.Mockito.*;
 final class CourseCreatorShould {
 
     @Test
-    void save_a_valid_course() throws Exception {
+    void create_a_valid_course() throws Exception {
         CourseRepository repository = mock(CourseRepository.class);
         CourseCreator creator = new CourseCreator(repository);
 
-        Course course = new Course("some-id", "some-name", "some-duration");
+        CreateCourseRequestDTO requestedCourse = new CreateCourseRequestDTO("some-id", "some-name", "some-duration");
+        Course course = new Course(new CourseId(requestedCourse.id()), new CourseName(requestedCourse.name()), new CourseDuration(requestedCourse.duration()));
 
-        creator.create(new CreateCourseRequestDTO(course.id(), course.name(), course.duration()));
+        creator.create(requestedCourse);
 
         verify(repository, atLeastOnce()).save(course);
     }
