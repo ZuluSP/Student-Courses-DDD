@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 // Integration test, infrastracture layer.
 final class InMemoryCourseRepositoryShould extends CoursesModuleInfrastructureTestCase {
-    static final String UUID_TEST = "a91c37e3-541f-4c15-a92f-b3318dbbff62";
     @Test
     void save_a_valid_course() throws Exception {
         InMemoryCourseRepository repository = new InMemoryCourseRepository();
