@@ -1,13 +1,14 @@
 package carlos.projects.mooc.courses.application.create;
 
 import carlos.projects.mooc.courses.domain.*;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public final class CourseCreator {
     private CourseRepository repository;
 
-    public CourseCreator(CourseRepository repository) {
+    public CourseCreator(@Qualifier("mySqlCourseRepository") CourseRepository repository) {
         this.repository = repository;
     }
 

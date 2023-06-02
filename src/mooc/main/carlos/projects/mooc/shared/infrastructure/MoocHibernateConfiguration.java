@@ -1,5 +1,6 @@
 package carlos.projects.mooc.shared.infrastructure;
 
+
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.hibernate.cfg.AvailableSettings;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +25,7 @@ import java.util.stream.Collectors;
 @EnableTransactionManagement
 public class MoocHibernateConfiguration {
 
-    @Bean
+    @Bean("mooc-session_factory")
     public LocalSessionFactoryBean sessionFactory() throws IOException  {
        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
        sessionFactory.setDataSource(dataSource());
@@ -48,7 +49,7 @@ public class MoocHibernateConfiguration {
             String[] files = mappingFilesIn(path + module + "/infrastructure/persistence/hibernate/");
 
             for (String file : files) {
-                goodPaths.add(path + module + "infrastructure/persistence/hibernate/" + file);
+                goodPaths.add(path + module + "/infrastructure/persistence/hibernate/" + file);
             }
         }
         return goodPaths.stream().map(FileSystemResource::new).collect(Collectors.toList());
@@ -79,7 +80,7 @@ public class MoocHibernateConfiguration {
         BasicDataSource dataSource = new BasicDataSource();
 
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://%s:%s/%s?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+        dataSource.setUrl("jdbc:mysql://mysql.db.server:3306/my_database?useSSL=false&serverTimezone=UTC");
         dataSource.setUsername("root");
         dataSource.setPassword("");
 
