@@ -1,6 +1,6 @@
 package carlos.projects.mooc.courses;
 
-import carlos.projects.mooc.courses.infrastructure.InMemoryCourseRepository;
+import carlos.projects.mooc.courses.infrastructure.persistence.InMemoryCourseRepository;
 import carlos.projects.shared.insfrastructure.InfrastructureTestCase;
 import org.springframework.beans.factory.annotation.Autowired;
 

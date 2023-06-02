@@ -2,7 +2,6 @@ package carlos.projects.mooc.courses.infrastructure.persistence;
 
 import carlos.projects.mooc.courses.CoursesModuleInfrastructureTestCase;
 import carlos.projects.mooc.courses.domain.*;
-import carlos.projects.mooc.courses.infrastructure.InMemoryCourseRepository;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package carlos.projects.mooc.courses.infrastructure;
+package carlos.projects.mooc.courses.infrastructure.persistence;
 
 import carlos.projects.mooc.courses.domain.Course;
 import carlos.projects.mooc.courses.domain.CourseId;
