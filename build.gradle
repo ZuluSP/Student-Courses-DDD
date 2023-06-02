@@ -88,11 +88,22 @@ subprojects {
     }
 
     dependencies {
+        // Implementations source -> https://central.sonatype.com/
         implementation 'org.springframework.boot:spring-boot-starter-web:2.1.8.RELEASE'
+        implementation 'org.hibernate:hibernate-core:6.2.2.Final'
+        implementation 'org.springframework:spring-orm:5.3.27'
+        // We will use it for the pull of connections in production (hibernate gives us one for default)
+        implementation 'org.apache.tomcat:tomcat-dbcp:11.0.0-M6'
 
+        // Implementations to read in a good way the xml (to have and read errors, etc).
+        implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
+        implementation 'com.sun.xml.bind:jaxb-impl:4.0.2'
 
         // All our subprojects are gonna deppend on the rootProject.
         testImplementation rootProject.sourceSets.main.output
+
+
+        //Tests implementations
         testImplementation 'org.springframework.boot:spring-boot-starter-test:2.1.8.RELEASE'
         testImplementation 'net.datafaker:datafaker:1.9.0'
 

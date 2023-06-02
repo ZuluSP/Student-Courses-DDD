@@ -2,14 +2,21 @@ package carlos.projects.apps;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 
-@SpringBootApplication
-@ComponentScan({"carlos.projects.apps", "carlos.projects.mooc", "carlos.projects.backoffice"})
+// As we are doing custom savings, we don't want to Hibernate autoconfiguration class to act, so we exclude it.
+@SpringBootApplication(exclude = HibernateJpaAutoConfiguration.class)
+@ComponentScan(
+        includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Service.class),
+        value = {"carlos.projects.apps", "carlos.projects.mooc"}
+)
 public class Starter {
     public static void main(String[] args) {
         SpringApplication.run(Starter.class, args);
