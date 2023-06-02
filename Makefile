@@ -3,10 +3,10 @@
 all: build
 
 build:
-	@./gradlew build --warning-mode all
+	@gradlew build --warning-mode all
 
 run:
-	@./gradlew :run
+	@gradlew :run
 
 test:
-	@./gradlew :test --warning-mode all
+	@gradlew :test --warning-mode all
