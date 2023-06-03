@@ -12,8 +12,21 @@ buildscript {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.7.12'
     }
 }
+
 plugins {
     id 'application'
+}
+
+sourceSets {
+    main {
+        java { srcDirs = ['apps/main'] }
+        resources { srcDirs = ['apps/main/resources'] }
+    }
+
+    test {
+        java { srcDirs = ['apps/test'] }
+        resources { srcDirs = ['apps/test/resources'] }
+    }
 }
 
 application {
@@ -37,6 +50,7 @@ allprojects {
         // Prod
         implementation 'org.apache.logging.log4j:log4j-core:2.12.1'
         implementation 'com.vlkan.log4j2:log4j2-logstash-layout:0.21'
+        implementation 'mysql:mysql-connector-java:8.0.18'
 
         // Test
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
@@ -122,21 +136,6 @@ subprojects {
         enabled = true
     }
 }
-
-sourceSets {
-    main {
-        java { srcDirs = ['apps/main'] }
-        resources { srcDirs = ['apps/main/resources'] }
-    }
-
-    test {
-        java { srcDirs = ['apps/test'] }
-        resources { srcDirs = ['apps/test/resources'] }
-    }
-}
-
-
-
 
 bootJar {
     archiveBaseName = 'students-courses-ddd'

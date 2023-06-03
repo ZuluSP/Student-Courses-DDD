@@ -1,6 +1,5 @@
 package carlos.projects.mooc.shared.infrastructure;
 
-
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.hibernate.cfg.AvailableSettings;
 import org.springframework.context.annotation.Bean;
@@ -75,14 +74,14 @@ public class MoocHibernateConfiguration {
 
         return files;
     }
-    @Bean
+    @Bean("mooc-data_source")
     public DataSource dataSource() throws IOException {
         BasicDataSource dataSource = new BasicDataSource();
 
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://mysql.db.server:3306/my_database?useSSL=false&serverTimezone=UTC");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/mooc?useSSL=false&serverTimezone=UTC");
         dataSource.setUsername("root");
-        dataSource.setPassword("");
+        dataSource.setPassword("admin123");
 
         return dataSource;
     }

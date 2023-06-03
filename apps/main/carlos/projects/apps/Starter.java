@@ -13,10 +13,7 @@ import java.util.Arrays;
 
 // As we are doing custom savings, we don't want to Hibernate autoconfiguration class to act, so we exclude it.
 @SpringBootApplication(exclude = HibernateJpaAutoConfiguration.class)
-@ComponentScan(
-        includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Service.class),
-        value = {"carlos.projects.apps", "carlos.projects.mooc"}
-)
+@ComponentScan({"carlos.projects.apps", "carlos.projects.mooc"})
 public class Starter {
     public static void main(String[] args) {
         SpringApplication.run(Starter.class, args);

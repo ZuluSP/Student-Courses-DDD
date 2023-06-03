@@ -16,7 +16,7 @@ public final class CoursesPutController {
     public CoursesPutController(CourseCreator creator) {
         this.creator = creator;
     }
-    @PutMapping("/courses/{id}")
+    @PutMapping(value = "/courses/{id}")
     public ResponseEntity<String> create(@PathVariable String id, @RequestBody Request request) {
         creator.create(new CreateCourseRequestDTO(id, request.name(), request.duration()));
         return new ResponseEntity(HttpStatus.CREATED);

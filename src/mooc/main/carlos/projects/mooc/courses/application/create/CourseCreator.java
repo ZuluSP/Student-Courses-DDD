@@ -4,6 +4,7 @@ import carlos.projects.mooc.courses.domain.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public final class CourseCreator {
     private CourseRepository repository;
