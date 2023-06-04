@@ -2,6 +2,7 @@ package carlos.projects.mooc.courses.application.create;
 
 import carlos.projects.mooc.courses.CoursesModuleUnitTestCase;
 import carlos.projects.mooc.courses.domain.*;
+import carlos.projects.shared.domain.course.CourseCreatedDomainEvent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +14,7 @@ final class CourseCreatorShould extends CoursesModuleUnitTestCase {
     protected void setUp() {
         super.setUp();
 
-        creator = new CourseCreator(repository);
+        creator = new CourseCreator(repository, eventBus);
     }
 
     @Test
@@ -21,9 +22,15 @@ final class CourseCreatorShould extends CoursesModuleUnitTestCase {
         CreateCourseRequestDTO requestedCourse = CreateCourseRequestDTOMother.random();
 
         Course course = CourseMother.fromRequest(requestedCourse);
-
-        creator.create(requestedCourse);
+        // We create the domain event from Course because it is needed to have all the course properties that we are recording.
+        CourseCreatedDomainEvent domainEvent = CourseCreatedDomainEventMother.fromCourse(course);
+        creator.create(
+                CourseIdMother.create(requestedCourse.id()),
+                CourseNameMother.create(requestedCourse.name()),
+                CourseDurationMother.create(requestedCourse.duration())
+        );
 
         shouldHaveSaved(course);
+        shouldHavePublished(domainEvent);
     }
 }

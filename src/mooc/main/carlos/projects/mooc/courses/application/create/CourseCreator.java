@@ -2,21 +2,24 @@ package carlos.projects.mooc.courses.application.create;
 
 import carlos.projects.mooc.courses.domain.*;
 import carlos.projects.shared.domain.Service;
-import org.springframework.beans.factory.annotation.Qualifier;
+import carlos.projects.shared.domain.bus.event.EventBus;
 
 
 
 @Service
 public final class CourseCreator {
-    private CourseRepository repository;
+    private final CourseRepository repository;
+    private final EventBus         eventBus;
 
-    public CourseCreator(@Qualifier("mySqlCourseRepository") CourseRepository repository) {
+    public CourseCreator(CourseRepository repository, EventBus eventBus) {
         this.repository = repository;
+        this.eventBus   = eventBus;
     }
 
-    public void create(CreateCourseRequestDTO request) {
-        Course course = new Course(new CourseId(request.id()), new CourseName(request.name()), new CourseDuration(request.duration()));
+    public void create(CourseId id, CourseName name, CourseDuration duration) {
+        Course course = Course.create(id, name, duration);
 
         repository.save(course);
+        eventBus.publish(course.pullDomainEvents());
     }
 }

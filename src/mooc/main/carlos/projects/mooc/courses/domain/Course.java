@@ -1,8 +1,10 @@
 package carlos.projects.mooc.courses.domain;
+import carlos.projects.shared.domain.AggregateRoot;
+import carlos.projects.shared.domain.course.CourseCreatedDomainEvent;
 
 import java.util.Objects;
 
-public final class Course {
+public final class Course extends AggregateRoot {
 
     private final CourseId id;
     private final CourseName name;
@@ -12,6 +14,19 @@ public final class Course {
         this.id = id;
         this.name = name;
         this.duration = duration;
+    }
+    private Course() {
+        id       = null;
+        name     = null;
+        duration = null;
+    }
+
+    public static Course create(CourseId id, CourseName name, CourseDuration duration) {
+        Course course = new Course(id, name, duration);
+
+        course.record(new CourseCreatedDomainEvent(id.value(), name.value(), duration.value()));
+
+        return course;
     }
 
     @Override
