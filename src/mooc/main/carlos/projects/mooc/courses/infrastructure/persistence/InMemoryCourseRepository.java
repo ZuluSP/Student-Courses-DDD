@@ -3,7 +3,7 @@ package carlos.projects.mooc.courses.infrastructure.persistence;
 import carlos.projects.mooc.courses.domain.Course;
 import carlos.projects.mooc.courses.domain.CourseId;
 import carlos.projects.mooc.courses.domain.CourseRepository;
-import org.springframework.stereotype.Service;
+import carlos.projects.shared.domain.Service;
 
 
 import java.util.HashMap;

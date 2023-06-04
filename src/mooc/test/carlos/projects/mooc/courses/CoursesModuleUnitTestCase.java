@@ -1,6 +1,5 @@
 package carlos.projects.mooc.courses;
 
-import carlos.projects.mooc.courses.application.create.CourseCreator;
 import carlos.projects.mooc.courses.domain.Course;
 import carlos.projects.mooc.courses.domain.CourseRepository;
 import carlos.projects.shared.insfrastructure.UnitTestCase;

@@ -1,6 +1,7 @@
 package carlos.projects.shared.infrastructure.cli;
 
-import org.springframework.stereotype.Service;
+
+import carlos.projects.shared.domain.Service;
 
 @Service
 public abstract class ConsoleCommand {

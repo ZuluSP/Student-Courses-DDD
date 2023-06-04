@@ -1,8 +1,9 @@
 package carlos.projects.mooc.courses.application.create;
 
 import carlos.projects.mooc.courses.domain.*;
+import carlos.projects.shared.domain.Service;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+
 
 
 @Service

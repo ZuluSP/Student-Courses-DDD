@@ -2,7 +2,6 @@ package carlos.projects.mooc.courses.domain;
 
 import carlos.projects.shared.domain.IntegerMother;
 import carlos.projects.shared.domain.RandomElementPicker;
-import carlos.projects.shared.domain.WordMother;
 
 public class CourseDurationMother {
     public static CourseDuration create(String value) {
