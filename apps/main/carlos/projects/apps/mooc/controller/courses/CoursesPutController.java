@@ -2,6 +2,9 @@ package carlos.projects.apps.mooc.controller.courses;
 
 import carlos.projects.mooc.courses.application.create.CourseCreator;
 import carlos.projects.mooc.courses.application.create.CreateCourseRequestDTO;
+import carlos.projects.mooc.courses.domain.CourseDuration;
+import carlos.projects.mooc.courses.domain.CourseId;
+import carlos.projects.mooc.courses.domain.CourseName;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +21,9 @@ public final class CoursesPutController {
     }
     @PutMapping(value = "/courses/{id}")
     public ResponseEntity<String> create(@PathVariable String id, @RequestBody Request request) {
-        creator.create(new CreateCourseRequestDTO(id, request.name(), request.duration()));
+        CreateCourseRequestDTO courseRequested = new CreateCourseRequestDTO(id, request.name(), request.duration());
+        // TODO change it with creates
+        creator.create(new CourseId(courseRequested.id()), new CourseName(courseRequested.name()), new CourseDuration(courseRequested.duration()));
         return new ResponseEntity(HttpStatus.CREATED);
     }
 }
