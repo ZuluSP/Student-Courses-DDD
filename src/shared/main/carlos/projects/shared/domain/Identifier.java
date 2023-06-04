@@ -10,6 +10,9 @@ public abstract class Identifier {
         this.value = UUID.fromString(value);
     }
 
+    protected Identifier() {
+    }
+
     public String value() { return value.toString(); }
 
     @Override
