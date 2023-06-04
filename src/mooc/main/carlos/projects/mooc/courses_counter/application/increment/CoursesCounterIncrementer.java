@@ -22,9 +22,13 @@ public final class CoursesCounterIncrementer {
         // we use the lamda to not execute the expression directly and doing it only if the search doesn't find anything.
         CoursesCounter counter = repository.search()
                                            .orElseGet(() -> CoursesCounter.initialize(uuidGenerator.generate()));
-
+        // Necessary check to avoid multiples increments.
+        // We don't want to return an error in this event because we will probably want to retry or handle it in other ways.
+        if(counter.hasIncremented(id)) {
             counter.increment(id);
 
             repository.save(counter);
+        }
+
     }
 }
