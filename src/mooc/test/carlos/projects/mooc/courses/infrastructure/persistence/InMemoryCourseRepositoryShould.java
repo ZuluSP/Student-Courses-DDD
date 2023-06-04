@@ -1,6 +1,6 @@
 package carlos.projects.mooc.courses.infrastructure.persistence;
 
-import carlos.projects.mooc.courses.CoursesModuleInfrastructureTestCase;
+import carlos.projects.mooc.courses.CoursesModuleInfrastructureTestCaseMooc;
 import carlos.projects.mooc.courses.domain.*;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 // Integration test, infrastracture layer.
-final class InMemoryCourseRepositoryShould extends CoursesModuleInfrastructureTestCase {
+final class InMemoryCourseRepositoryShould extends CoursesModuleInfrastructureTestCaseMooc {
     @Test
     void save_a_valid_course() throws Exception {
         InMemoryCourseRepository repository = new InMemoryCourseRepository();

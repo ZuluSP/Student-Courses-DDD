@@ -1,6 +1,6 @@
 package carlos.projects.mooc.courses.infrastructure.persistence;
 
-import carlos.projects.mooc.courses.CoursesModuleInfrastructureTestCase;
+import carlos.projects.mooc.courses.CoursesModuleInfrastructureTestCaseMooc;
 import carlos.projects.mooc.courses.domain.Course;
 import carlos.projects.mooc.courses.domain.CourseIdMother;
 import carlos.projects.mooc.courses.domain.CourseMother;
@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @Transactional
-class MySqlCourseRepositoryShould extends CoursesModuleInfrastructureTestCase {
+class MySqlCourseRepositoryShould extends CoursesModuleInfrastructureTestCaseMooc {
     @Test
     void save_a_course() {
         Course course = CourseMother.random();

@@ -7,5 +7,5 @@ import carlos.projects.apps.mooc.MoocBackendApplication;
 
 @ContextConfiguration(classes = MoocBackendApplication.class)
 @SpringBootTest
-public abstract class ContextInfrastructureTestCase extends InfrastructureTestCase {
+public abstract class MoocContextInfrastructureTestCase extends InfrastructureTestCase {
 }
