@@ -2,6 +2,7 @@ package carlos.projects.apps.mooc;
 
 
 import carlos.projects.apps.mooc.command.AnotherFakeCommand;
+import carlos.projects.apps.mooc.command.ConsumeMySqlDomainEventsCommand;
 import carlos.projects.apps.mooc.command.FakeCommand;
 import carlos.projects.shared.domain.Service;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,6 +21,7 @@ import java.util.HashMap;
 public class MoocBackendApplication {
     public static HashMap<String, Class<?>> commands() {
         return new HashMap<String, Class<?>>() {{
+            put("domain-events:mysql:consume", ConsumeMySqlDomainEventsCommand.class);
             put("fake", FakeCommand.class);
             put("another_fake", AnotherFakeCommand.class);
         }};
