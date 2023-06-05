@@ -60,11 +60,12 @@ public class MySqlDomainEventsConsumer {
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
                 e.printStackTrace();
             }
-
+            // flush, Completely clear the session. Evict all loaded instances and cancel all pending saves, updates and deletions.
             sessionFactory.getCurrentSession().clear();
         }
     }
 
+    // Will be used to stop the consumer,(gracefull shutdown).
     public void stop() {
         shouldStop = true;
     }

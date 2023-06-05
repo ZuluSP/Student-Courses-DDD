@@ -24,7 +24,7 @@ class MySqlEventBusShould extends MoocContextInfrastructureTestCase {
         CourseCreatedDomainEvent domainEvent = CourseCreatedDomainEventMother.random();
 
         eventBus.publish(Collections.singletonList(domainEvent));
-
         consumer.consume();
+        consumer.stop();
     }
 }
