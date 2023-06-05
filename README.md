@@ -3,7 +3,7 @@
 <img src="https://pluralsight2.imgix.net/paths/images/domain-driven-design-6d10f953a0.png" align="left" width="192px" height="192px"/>
 <img align="left" width="0" height="192px" hspace="10"/>
 
-> ⚡ A project to show a little bit my current experience -> 06/2023
+> ⛔ CURRENTLY NOT WORKING.⛔
 
 ## ℹ️ Introduction
 
